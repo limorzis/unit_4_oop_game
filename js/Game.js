@@ -63,15 +63,17 @@
 
 	// Check if gameWon is true and display the winning or losing overlay
 	gameOver() {
-		document.getElementById('overlay').style.display = 'flex';
+		const overlay = document.getElementById('overlay')
+		const gameOverMessage = document.getElementById("game-over-message")
+		overlay.style.display = 'flex'
 		if (this.gameWon){
-			document.getElementById("game-over-message").textContent = `Well done, ${game.activePhrase.phrase}!`
-			document.getElementById("overlay").className = "win"
-			button.innerHTML = "Play Again"
+			gameOverMessage.textContent = `Well done, ${game.activePhrase.phrase}!`
+			overlay.className = 'win'
+			button.innerHTML = 'Play Again'
 		} else {
-			document.getElementById("game-over-message").textContent = "You lost. Try again?"
-			document.getElementById("overlay").className = "lose"
-			button.innerHTML = "Try Again"
+			gameOverMessage.textContent = 'You lost. Try again?'
+			overlay.className = 'lose'
+			button.innerHTML = 'Try Again'
 		}
 		document.querySelectorAll('.key').forEach((key) => {
 			key.disabled = true

@@ -21,11 +21,7 @@ class Phrase {
 
 	// Checks if passed letter is in phrase
 	checkLetter(letter) {
-		if (game.activePhrase.phrase.includes(letter.textContent)) {
-			return true 
-		} else {
-			return false
-		}
+		return this.phrase.includes(letter.textContent)
 	}
 	
 	// Find all the letters in the phrase matching the user's guess and change the class to 'show' 

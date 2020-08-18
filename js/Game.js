@@ -31,28 +31,15 @@
 	}
 
 	// Carries out all the steps when user types or clicks a key
-	handleInteraction() {
-		let keys = document.querySelectorAll(".key")
-		keys.forEach((key) => {
-			key.addEventListener('click', (e) => {
-				const letter = key;
-				console.log(letter)
-				letter.disabled = true;
-				game.activePhrase.checkLetter(letter)
-			})
-		})
-		
-		document.addEventListener('keyup', (e) => {
-			keys.forEach((key) => {
-				if (key.textContent === e.key && key.disabled === false) {
-					const letter = key;
-					game.activePhrase.checkLetter(letter)
-					letter.disabled = true;
-				} else if (key.textContent === e.key && key.disabled === true) {
-					console.log('Already guessed that letter')
-				}
-			})
-		})
+	handleInteraction(letter) {
+		if (game.activePhrase.checkLetter(letter)) {
+			letter.classList.add('chosen')
+			game.activePhrase.showMatchedLetter(letter)
+			game.checkForWin()
+		} else {
+			letter.classList.add('wrong')
+			game.removeLife();
+		}
 	}
 
 	// Checks if all letters are revealed by checking that there are no hidden letters

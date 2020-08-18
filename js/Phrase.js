@@ -22,14 +22,9 @@ class Phrase {
 	// Checks if passed letter is in phrase
 	checkLetter(letter) {
 		if (game.activePhrase.phrase.includes(letter.textContent)) {
-			console.log(`User correctly guessed ${letter.textContent}`)
-			letter.classList.add('chosen')
-			this.showMatchedLetter(letter)
-			game.checkForWin()
+			return true 
 		} else {
-			console.log(`User incorrectly guessed ${letter.textContent}`)
-			letter.classList.add('wrong')
-			game.removeLife();
+			return false
 		}
 	}
 	
